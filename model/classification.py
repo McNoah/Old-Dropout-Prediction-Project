@@ -214,7 +214,7 @@ class Model:
 
 
     def runClassification(self, outputFormat='score', doSubsampling=False, subRate=1.0,
-                            doSMOTE=False, pctSMOTE=100, nFolds=10, models=['LR'], topK=.1,):
+                            doSMOTE=False, pctSMOTE=100, nFolds=10, models=None, topK=.1,):
         """ Main function to train and evaluate model
 
         Allows user to set the type of output and a few other parameters to running a K-fold
@@ -244,6 +244,8 @@ class Model:
             Results are displayed inline for now
             
         """
+        if models is None:
+            models = ['LR']
 
         # Return a simple overall accuracy score
         if outputFormat=='score':
